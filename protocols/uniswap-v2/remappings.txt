@@ -1,0 +1,6 @@
+forge-std/=lib/forge-std/src/
+@openzeppelin/=lib/openzeppelin-contracts/contracts
+@uniCore/=src/
+@uniPer/=src/contracts
+@uniswap/lib/contracts/=src/
+@uniswap/v2-core/contracts/=src/
