@@ -31,4 +31,4 @@ There are no guarantees with using this project to secure your protocol! There i
 ## License
 Modified code forked from there respective companies are licensed under there respective licenses in accordance with the original licenses.
 
-All other files within this repository are licensed under the TODO License unless stated otherwise.
+All other files within this repository are licensed under the AGPL License unless stated otherwise.
