@@ -1,0 +1,17 @@
+{
+  "name": "olympus-contracts",
+  "version": "1.0.0",
+  "description": "Smart Contracts for Olympus",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlympusDAO/olympus-contracts.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/OlympusDAO/olympus-contracts/issues"
+  },
+  "homepage": "https://github.com/OlympusDAO/olympus-contracts#readme"
+}

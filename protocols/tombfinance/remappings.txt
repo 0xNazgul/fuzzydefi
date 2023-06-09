@@ -1,0 +1,6 @@
+forge-std/=lib/forge-std/src/
+@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts
+@solmate/=lib/solmate/src/
+@solmock/=lib/solmate/src/test/utils/mocks/
+@tomb/=src/
+@uni/=test/v2-core/
