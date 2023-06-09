@@ -1,0 +1,15 @@
+{
+    "name": "fuzzy-defi",
+    "version": "0.0.1",
+    "description": "Pre-built security properties for commonly forked DeFi protocols",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/0xNazgul/FuzzyDeFi.git"
+    },
+    "author": "0xNazgul",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/0xNazgul/FuzzyDeFi/issues"
+    },
+    "homepage": "https://github.com/0xNazgul/FuzzyDeFi#readme"
+  }
