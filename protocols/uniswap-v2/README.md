@@ -28,7 +28,7 @@ Unlike Uniswap V1 where liquidity pools were between ETH and a single ERC20 toke
 This is a new implementation that offers decentralized manipulation-resistant on-chain price feeds.
 * It measures prices when they are expensive to manipulate and accumulating historical data
 * Offers gas-efficient time-weighted averages of uniswp prices for any time interval
-* Uniswap v1 can't be used safely as a price oracle because the price can moe significantly in a short period of time
+* Uniswap v1 can't be used safely as a price oracle because the price can move significantly in a short period of time
 * It measures (not store) market price at the beginning of each block (before any trades take place). 
 	* Thus making it expensive to manipulate because it was set by the last Tx in a previous block.
 	* They would also have to make a bad trade at the end of the previous block and then be able to arbitrage it back in the next block
