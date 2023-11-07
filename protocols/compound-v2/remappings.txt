@@ -2,5 +2,4 @@ forge-std/=lib/forge-std/src/
 @openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts
 @openzeppelin/contracts/=lib/openzeppelin-contracts-upgradeable/openzeppelin-contracts/contracts
 @compound/=src/
-@compoundHar/=tests/Contracts/
 @rari-capital/solmate/=lib/solmate/

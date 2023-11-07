@@ -1,8 +1,7 @@
 # **Setup**
 # Setup
-1. `forge install foundry-rs/forge-std`
-2. `forge install OpenZeppelin/openzeppelin-contracts`
-3. `forge test --mc TestCore`
+1. `forge install`
+2. `forge test --mc TestCore`
 
 ## Integration
 1. Follow setup
@@ -10,18 +9,18 @@
 
 | Contract | Function |
 | --- | --- |
-[Masonry.sol](./src/Masonry.sol) | [getCashPriorpub()](./src/Masonry.sol#L210)
-[Oracle.sol](./src/Oracle.sol) | [getCashPriorpub()](./src/Oracle.sol#L85)
-[Treasury.sol](./src/Treasury.sol) | [getCashPriorpub()](./src/Treasury.sol#L287)
-[Treasury.sol](./src/Treasury.sol) | [getCashPriorpub()](./src/Treasury.sol#L551)
-[TShare.sol](./src/TShare.sol) | [getCashPriorpub()](./src/TShare.sol#L124)
+[Masonry.sol](./src/Masonry.sol) | [earning()](./src/Masonry.sol#L210)
+[Oracle.sol](./src/Oracle.sol) | [setPrice()](./src/Oracle.sol#L85)
+[Treasury.sol](./src/Treasury.sol) | [setepochSupplyContractionLeft()](./src/Treasury.sol#L287)
+[Treasury.sol](./src/Treasury.sol) | [moveEpoch()](./src/Treasury.sol#L551)
+[TShare.sol](./src/TShare.sol) | [mint()](./src/TShare.sol#L124)
 
 3. Remove test helpers from contracts before deploying 
 * I'm not responsible for what happens if you leave them in
 
 
 # **Notes on Tomb Finance**
-Tomb is a protocal that serves `TOMB` as an algorithmic token pegged to `FTM`. It's underlying mechanics are to adjust `TOMB`'s supply by moving the price up or down relativve to `FTM`'s price. Inspired by [Basis](https://www.basis.io/) and currently consists of three tokens, `TOMB`, `TSHARE` and `TBOND`. `TOMB` 
+Tomb is a protocol that serves `TOMB` as an algorithmic token pegged to `FTM`. It's underlying mechanics are to adjust `TOMB`'s supply by moving the price up or down relative to `FTM`'s price. Inspired by [Basis](https://www.basis.io/) and currently consists of three tokens, `TOMB`, `TSHARE` and `TBOND`. `TOMB` 
 
 ## **TOMB Token**:
 Main token that is algorithmic stablecoin pegged to `FTM`. When it's price is about 1 `FTM` (adjusted to a TWAP over 6 hour periods) this is the expansion phase/inflation phase. To bring the price down more `TOMB` is minted at a percentage of supply. 
@@ -40,7 +39,7 @@ Holders also have voting rights on proposals to improve the protocol. There is a
 3. Remaining 59_500 `TSHARE` are allocated for incentivizing Liquidity Providers in two shares pools for 12 months
 
 ## **TBONDS Token**:
-During reduction phase/deflationary phase or when `TOMB` price falls below 1 `FTM`. Users can burn supply themselves and profit when the price goes back above the peg. In doing so the user recieves `TBOND` tokens. Users can then redeem their `TBOND`s for `TOMB` with a bonus multiplier starting once the price is above 1. 
+During reduction phase/deflationary phase or when `TOMB` price falls below 1 `FTM`. Users can burn supply themselves and profit when the price goes back above the peg. In doing so the user receives `TBOND` tokens. Users can then redeem their `TBOND`s for `TOMB` with a bonus multiplier starting once the price is above 1. 
 
 * Available for purchase in the Pit R (bonus multiplier) can be calculated in the formula as shown below:
     * `R=1+[(TOMB(​twapprice)−1)∗coeff)]`
@@ -75,118 +74,3 @@ During reduction phase/deflationary phase or when `TOMB` price falls below 1 `FT
 [Post Mortem](https://tombfinance.medium.com/tomb-finance-post-mortem-480fa68375b2)
 [Post Mortem pt2](https://tombfinance.medium.com/the-postmortem-revival-of-tomb-finance-past-present-and-future-f78cd19d48bd)
 [TombSwap](https://tombfinance.medium.com/tombswap-has-arrived-aa9816b455a1)
-
-
-### **Invariants TODO:**
-* `TombGenesisRewardPool.sol`
-	1. `deposit()`
-		* Update pool reward variables
-		* Decrease User bal of token
-		* Update User rewardDebt
-		* Increase user bal amount 
-	2. `withdraw()`
-		* Update pool reward variables
-		* Increase User bal of token
-		* Update User rewardDebt
-		* Decrease user bal amount 
-	3. `emergencyWithdraw()`
-		* Increase User bal of token
-		* Decrease User rewardDebt
-		* Decrease user bal amount 
-	5. `governanceRecoverUnsupported()`
-		* Decrease contract bal of token 	
-		* Increase to User bal of token
-* `TombRewardPool.sol`
-	1. `deposit()`
-		* Update pool reward variables
-		* Decrease User bal of token
-		* Increase User rewardDebt
-		* Increase user bal amount 
-	2. `withdraw()`
-		* Update pool reward variables
-		* Increase User bal of token
-		* Update User rewardDebt
-		* Decrease user bal amount 
-	3. `emergencyWithdraw()`
-		* Increase User bal of token
-		* Decrease User rewardDebt
-		* Decrease user bal amount
-	5. `governanceRecoverUnsupported()`
-		* Decrease contract bal of token 	
-		* Increase to User bal of token
-* `TShareRewardPool.sol`
-	1. `deposit()`
-		* Update pool reward variables
-		* Decrease User bal of token
-		* Increase User rewardDebt
-		* Increase user bal amount 
-	2. `withdraw()`
-		* Update pool reward variables
-		* Increase User bal of token
-		* Update User rewardDebt
-		* Decrease user bal amount 
-	3. `emergencyWithdraw()`
-		* Increase User bal of token
-		* Decrease User rewardDebt
-		* Decrease user bal amount
-	5. `governanceRecoverUnsupported()`
-		* Decrease contract bal of token 	
-		* Increase to User bal of token
-* `Masonry.sol`
-	1. `stake()`
-		* Increase totalSupply
-		* Increase User staked bal
-		* Decrease User tbond amount
-	2. `withdraw()`
-		* Decrease totalSupply
-		* Decrease User staked bal
-		* Increase User tbond amount
-	3. `claimReward()`
-		* Decrease User Reward
-		* Increase tomb bal
-		* Update User epochTimerStart
-	4. `exit()`
-		* Decrease totalSupply
-		* Decrease User staked bal
-		* Increase User tbond amount
-	5. `allocateSeigniorage()`
-		* Update nextRPS
-		* Update time
-		* Decrease from User tomb bal
-		* Increase contracts tomb bal
-	6. `governanceRecoverUnsupported()`
-		* Decrease contract bal of token 	
-		* Increase to User bal of token 
-* `Treasury.sol`
-	1. `buyBonds()`
-		* Decrease User tomb bal
-		* Increase User tbond bal
-		* Decrease epochSupplyContractionLeft
-	2. `redeemBonds()`
-		* Decrease User tbond bal
-		* Increase User tomb bal
-		* Decrease epochSupplyContractionLeft	
-	3. `allocateSeigniorage()`
-		* Update previousEpochTombPrice
-		* If `_savedForBond > 0`, increase contract tomb bal 
-		* If `_savedForMasonry > 0 && daoFundSharedPercent > 0` increase daoFund tomb bal
-		* If `_savedForMasonry > 0 && devFundSharedPercent > 0` increase devFund tomb bal 
-		* Update masonry's allowance 
-	4. `governanceRecoverUnsupported()`
-		* Decrease contract bal of token 
-		* Increase to User bal of token 
-* `TShare.sol`
-	1. `claimRewards()`
-		* Increase totalSupply 
-		* If `_pending > 0 && communityFund != address(0)` increase communityFund tshare bal
-		* If `_pending > 0 && devFund != address(0)` increase devFund tshare bal
-	2. `distributeReward()`
-		* Update rewardPoolDistributed to true
-		* Increase totalSupply
-		* Increase farmingIncentiveFund bal
-	3. `burn()`
-		* Decrease User Balance
-		* Decrease Total Supply
-	4. `governanceRecoverUnsupported()`
-		* Decrease contract bal of token 
-		* Increase to User bal of token 

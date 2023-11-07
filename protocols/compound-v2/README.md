@@ -1,5 +1,5 @@
 # Setup
-1. `forge install foundry-rs/forge-std`
+1. `forge install`
 2. `forge test --mc TestCore`
 
 ## Integration
@@ -66,7 +66,7 @@ The total amount of interest earned by suppliers must be < total interest produc
 * `Supply Interest Rate = Borrowing Interest Rate * U * (1 - S)`
 
 ### **cTokens**:
-This is a EIP-20 compliant contract that keeps track of balances supplied to the protocol. Users can mint cTokens to earn interest from the cTokens exhcange rate that increases in value relative to the asset. Users can also use the cTokens as collateral.
+This is a EIP-20 compliant contract that keeps track of balances supplied to the protocol. Users can mint cTokens to earn interest from the cTokens exchange rate that increases in value relative to the asset. Users can also use the cTokens as collateral.
 * All mints, redeems, borrow, repays a borrow, liquidates a borrow or transfers are done via the cToken.
 * Two types of cTokens CErc20 (wraps the underlying ERC-20 asset)and CEther (wraps ether)
 
@@ -93,7 +93,7 @@ The proposal process is as follows:
 Comp itself is an ERC-20 token that has voting rights.
 
 ### **Open Price Feed**:
-Accounts price data for the protocol and is used by the comptroller as a source of truth for prices. Compound uses a price feed to verify the reported prices are withing bounds of TWAP of the pair on Uniswap v2 (sanity check or Ancchor price).
+Accounts price data for the protocol and is used by the comptroller as a source of truth for prices. Compound uses a price feed to verify the reported prices are withing bounds of TWAP of the pair on Uniswap v2 (sanity check or Anchor price).
 
 Chainlink price feeds submit prices for each cToken through an individual validatorProxy. This is the only valid reporter for the underlying asset price.
 
@@ -104,7 +104,7 @@ Open Price Feed has two main contracts:
 Allows multiple views to use the same underlying price data and verify the prices in their own way.
 
 * Stablecoins are fixed at $1. SAI is fixed at 0.005285 ETH.
-* Compound multisig has the ability to switch market's primary oracle from chainlink price feeds to uniswap v2 during a failover.
+* Compound multisig has the ability to switch market's primary oracle from Chainlink price feeds to uniswap v2 during a failover.
 
 ### **Extra Links**:
 [Whitpaper](https://github.com/compound-finance/compound-money-market/blob/master/docs/CompoundWhitepaper.pdf)

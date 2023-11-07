@@ -1,6 +1,6 @@
 {
     "name": "fuzzy-defi",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Pre-built security properties for commonly forked DeFi protocols",
     "repository": {
       "type": "git",

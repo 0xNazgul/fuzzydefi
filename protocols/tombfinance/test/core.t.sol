@@ -4,11 +4,11 @@ pragma experimental ABIEncoderV2;
 
 // Test Helpers
 import "@tomb/interfaces/IUniswapV2Pair.sol";
-import {MockUniPair} from "./MockUniPair.sol";
+import {MockUniPair} from "./mocks/MockUniPair.sol";
 import "forge-std/Test.sol";
 
 // Mock tokens
-import "./MockWeth.sol";
+import "./mocks/MockWeth.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@tomb/DummyToken.sol";
 
@@ -32,7 +32,7 @@ import {TShareRewardPool} from "@tomb/distribution/TShareRewardPool.sol";
 import {Distributor} from "@tomb/Distributor.sol";
 import "@tomb/interfaces/IDistributor.sol";
 
-contract CoreTest is MockUniPair, Test {
+contract TestCore is MockUniPair, Test {
     uint256 MAX = type(uint256).max;
     uint256 INITR = 100000000000000 + 1 ether; // Initial reserve of tomb minted in setup process
     uint INIT = 10**4; // Just above initial reserve for Uniswap

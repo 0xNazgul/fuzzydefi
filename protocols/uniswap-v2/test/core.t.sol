@@ -3,15 +3,15 @@ pragma solidity ^0.8.0;
 
 // Test Helpers, Mock Tokens
 import "forge-std/Test.sol";
-import "./MockWETH.sol";
+import {MockWETH} from "./mocks/MockWETH.sol";
 import {DeflatingERC20} from "@uniPer/test/DeflatingERC20.sol";
-import {MockToken} from "./MockToken.sol";
+import {MockToken} from "./mocks/MockToken.sol";
 
 // Pair factory and Pair
 import "@uniCore/UniswapV2Factory.sol";
 import "@uniCore/UniswapV2Pair.sol";
 
-// Routerss
+// Routers
 import "@uniPer/UniswapV2Router02.sol";
 
 contract TestCore is Test {

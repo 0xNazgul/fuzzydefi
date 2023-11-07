@@ -1,7 +1,7 @@
 # Fuzzy DeFi
 
 ## Properties
-This repository contains code properties for the current top five forked protocols:
+This repository contains code properties for the current top four forked protocols:
 1. [Uniswap v2](/protocols/uniswap-v2/README.md) An AMM powered by the constant product formula, [properties](/PROPERTIES.md#L15).
 2. [Olympus DAO](/protocols/olympus-v1/README.md) A protocol-owned Treasury serving the market gap between stablecoins and volatile assets, [properties](/PROPERTIES.md#L36).
 3. [Compound v2](/protocols/compound-v2/README.md#L46) An algorithmic, autonomous interest rate protocol, [properties](/PROPERTIES.md#L).

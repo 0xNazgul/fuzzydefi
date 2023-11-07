@@ -24,7 +24,7 @@ import {JumpRateModelV2} from "@compound/JumpRateModelV2.sol";
 
 // CToken, Underlying, Price Oracle
 import "@compound/CErc20.sol";
-import "@compoundHar/ERC20.sol";
+import "./mocks/ERC20.sol";
 import "@compound/SimplePriceOracle.sol";
 
 contract TestCore is Test {
